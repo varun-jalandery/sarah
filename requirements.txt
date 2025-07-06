@@ -1,0 +1,5 @@
+chromadb==1.0.15
+ollama==0.5.1
+sentence-transformers==4.1.0
+python-dotenv==1.1.1
+psutil==7.0.0

@@ -1,0 +1,113 @@
+@startuml MyAI_Architecture
+!theme aws-orange
+title MyAI Project - Technical Architecture
+
+!define RECTANGLE class
+
+package "User Interface Layer" as UI {
+  [Interactive CLI] as CLI
+  note right of CLI : Commands: /context, /clear, /model, /info, /help, /bye
+}
+
+package "Application Core" as Core {
+  [RAGApplication] as App
+  note right of App : Main orchestrator\n(app.py)
+}
+
+package "Processing Components" as Processing {
+  [RAG Processor] as RAG
+  [Enhanced RAG Processor] as EnhancedRAG
+  [Interactive Commands] as Commands
+  
+  note right of RAG : • Embeddings\n• Retrieval\n• Generation
+  note right of EnhancedRAG : • Formatting\n• Distance Filtering\n• Response Enhancement
+  note right of Commands : • Command parsing\n• Multi-line input\n• Context management
+}
+
+package "Storage Layer" as Storage {
+  [ChromaDB Manager] as ChromaDB
+  database "Vector Database" as VectorDB
+  
+  note right of ChromaDB : • Collection management\n• Similarity search\n• Document operations
+}
+
+
+
+package "AI Models Layer" as Models {
+  cloud "Ollama Models" as Ollama {
+    [mxbai-embed-large] as EmbedModel
+    [llama3.2] as LlamaModel
+    [gemma] as GemmaModel
+  }
+  
+  cloud "Sentence Transformers" as ST {
+    [BAAI/bge-large-en-v1.5] as STModel
+  }
+}
+
+
+
+' User interactions
+CLI --> App : User queries & commands
+
+' Application core connections
+App --> RAG : Process queries
+App --> EnhancedRAG : Enhanced processing
+App --> Commands : Handle commands
+
+
+' Processing layer connections
+RAG --> ChromaDB : Retrieve context
+RAG --> Ollama : Generate embeddings
+RAG --> ST : Sentence embeddings
+EnhancedRAG --> RAG : Base processing
+Commands --> ChromaDB : Manage documents
+
+' Storage connections
+ChromaDB --> VectorDB : Store/retrieve vectors
+
+' Model connections
+RAG --> EmbedModel : Generate embeddings
+RAG --> LlamaModel : Text generation
+RAG --> GemmaModel : Alternative generation
+RAG --> STModel : Semantic embeddings
+
+
+
+' Data flow annotations
+note as DataFlow
+  **Data Flow:**
+  1. User input → CLI
+  2. CLI → RAGApplication
+  3. Query processing → RAG/Enhanced RAG
+  4. Context retrieval → ChromaDB
+  5. Embedding generation → Ollama/ST
+  6. Response formatting → Enhanced Formatting
+  7. Formatted output → User
+end note
+
+' Configuration details
+note as ConfigDetails
+  **Key Configuration:**
+  • EMBEDDING_MODEL: mxbai-embed-large
+  • GENERATION_MODEL: llama3.2
+  • COLLECTION_NAME: docs_with_mxbai_embed
+  • ENABLE_DISTANCE_FILTERING: true
+  • BASE_DISTANCE_THRESHOLD: 0.8
+  • DEBUG_MODE: configurable
+end note
+
+' Features annotation
+note as Features
+  **Key Features:**
+  • RAG Pipeline with ChromaDB
+  • Dynamic Distance Filtering
+  • Multiple LLM Model Support
+  • Interactive Command System
+  • Enhanced Text Formatting
+  • Environment-based Configuration
+  • Multi-line Context Input
+  • Real-time Model Switching
+end note
+
+@enduml
