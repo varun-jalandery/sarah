@@ -231,8 +231,9 @@ class InteractiveCommands:
         
         print_header("\n🤖 LLM Model Switcher")
         print_info("Available models:")
-        print(colorize("  1. ", Colors.BRIGHT_BLUE) + colorize("gemma3:4b", Colors.BRIGHT_WHITE) + colorize(" - Gemma model", Colors.WHITE))
+        print(colorize("  1. ", Colors.BRIGHT_BLUE) + colorize("gemma3:4b", Colors.BRIGHT_WHITE) + colorize(" - Gemma model 4 billion params", Colors.WHITE))
         print(colorize("  2. ", Colors.BRIGHT_BLUE) + colorize("llama3.2", Colors.BRIGHT_WHITE) + colorize(" - Llama 3.2 model (default)", Colors.WHITE))
+        print(colorize("  3. ", Colors.BRIGHT_BLUE) + colorize("gemma3:27b", Colors.BRIGHT_WHITE) + colorize(" -Gemma model 27 billion params", Colors.WHITE))
         
         current_model = getattr(self.rag_processor, 'generation_model', 'Unknown')
         print_info(f"Current model: {colorize(current_model, Colors.BRIGHT_CYAN)}")
@@ -251,6 +252,8 @@ class InteractiveCommands:
             model_map = {
                 '1': 'gemma3:4b',
                 '2': 'llama3.2',
+                '3': 'gemma3:27b',
+                'gemma3:27b': 'gemma3:27b',
                 'gemma3:4b': 'gemma3:4b',
                 'llama3.2': 'llama3.2'
             }
