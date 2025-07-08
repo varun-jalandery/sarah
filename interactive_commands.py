@@ -209,7 +209,7 @@ class InteractiveCommands:
             colorize("  /bye     ", Colors.BRIGHT_MAGENTA) + colorize("- Exit the program", Colors.WHITE),
             colorize("  /context ", Colors.BRIGHT_MAGENTA) + colorize("- Add multi-line context to ChromaDB", Colors.WHITE),
             colorize("  /clear   ", Colors.BRIGHT_MAGENTA) + colorize("- Clear all documents from ChromaDB", Colors.WHITE),
-            colorize("  /model   ", Colors.BRIGHT_MAGENTA) + colorize("- Switch LLM model (gemma3:4b/llama3.2)", Colors.WHITE),
+            colorize("  /model   ", Colors.BRIGHT_MAGENTA) + colorize("- Switch LLM model (gemma3:4b/mistral:7b)", Colors.WHITE),
             colorize("  /info    ", Colors.BRIGHT_MAGENTA) + colorize("- Show system information", Colors.WHITE),
             colorize("  /help    ", Colors.BRIGHT_MAGENTA) + colorize("- Show this help message", Colors.WHITE),
             "",
@@ -232,8 +232,9 @@ class InteractiveCommands:
         print_header("\n🤖 LLM Model Switcher")
         print_info("Available models:")
         print(colorize("  1. ", Colors.BRIGHT_BLUE) + colorize("gemma3:4b", Colors.BRIGHT_WHITE) + colorize(" - Gemma model 4 billion params", Colors.WHITE))
-        print(colorize("  2. ", Colors.BRIGHT_BLUE) + colorize("mistral:7b", Colors.BRIGHT_WHITE) + colorize(" - mistral:7b model (default)", Colors.WHITE))
+        print(colorize("  2. ", Colors.BRIGHT_BLUE) + colorize("mistral:7b", Colors.BRIGHT_WHITE) + colorize(" - Mistral is a 7B parameter model, distributed with the Apache license", Colors.WHITE))
         print(colorize("  3. ", Colors.BRIGHT_BLUE) + colorize("gemma3:27b", Colors.BRIGHT_WHITE) + colorize(" -Gemma model 27 billion params", Colors.WHITE))
+         print(colorize("  4. ", Colors.BRIGHT_BLUE) + colorize("gemma3n:e4b", Colors.BRIGHT_WHITE) + colorize(" -Gemma model for everday use on everyday devices like phones, laptops :-)", Colors.WHITE))
         
         current_model = getattr(self.rag_processor, 'generation_model', 'Unknown')
         print_info(f"Current model: {colorize(current_model, Colors.BRIGHT_CYAN)}")
@@ -253,9 +254,11 @@ class InteractiveCommands:
                 '1': 'gemma3:4b',
                 '2': 'mistral:7b',
                 '3': 'gemma3:27b',
+                '4': 'gemma3n:e4b',
                 'gemma3:27b': 'gemma3:27b',
                 'gemma3:4b': 'gemma3:4b',
                 'mistral:7b': 'mistral:7b'
+                'gemma3n:e4b': 'gemma3n:e4b'
             }
             
             if choice not in model_map:
