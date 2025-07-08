@@ -257,7 +257,7 @@ class InteractiveCommands:
                 '4': 'gemma3n:e4b',
                 'gemma3:27b': 'gemma3:27b',
                 'gemma3:4b': 'gemma3:4b',
-                'mistral:7b': 'mistral:7b'
+                'mistral:7b': 'mistral:7b',
                 'gemma3n:e4b': 'gemma3n:e4b'
             }
             
