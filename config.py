@@ -19,7 +19,7 @@ class Config:
     
     # Ollama Models Configuration
     EMBEDDING_MODEL: str = os.getenv('EMBEDDING_MODEL', 'mxbai-embed-large')
-    GENERATION_MODEL: str = os.getenv('GENERATION_MODEL', 'llama3.2')
+    GENERATION_MODEL: str = os.getenv('GENERATION_MODEL', 'gemma3n:e4b')
     
     # Sentence Transformer Model
     SENTENCE_TRANSFORMER_MODEL: str = os.getenv('SENTENCE_TRANSFORMER_MODEL', 'BAAI/bge-large-en-v1.5')
