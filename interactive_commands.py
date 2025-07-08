@@ -234,7 +234,7 @@ class InteractiveCommands:
         print(colorize("  1. ", Colors.BRIGHT_BLUE) + colorize("gemma3:4b", Colors.BRIGHT_WHITE) + colorize(" - Gemma model 4 billion params", Colors.WHITE))
         print(colorize("  2. ", Colors.BRIGHT_BLUE) + colorize("mistral:7b", Colors.BRIGHT_WHITE) + colorize(" - Mistral is a 7B parameter model, distributed with the Apache license", Colors.WHITE))
         print(colorize("  3. ", Colors.BRIGHT_BLUE) + colorize("gemma3:27b", Colors.BRIGHT_WHITE) + colorize(" -Gemma model 27 billion params", Colors.WHITE))
-         print(colorize("  4. ", Colors.BRIGHT_BLUE) + colorize("gemma3n:e4b", Colors.BRIGHT_WHITE) + colorize(" -Gemma model for everday use on everyday devices like phones, laptops :-)", Colors.WHITE))
+        print(colorize("  4. ", Colors.BRIGHT_BLUE) + colorize("gemma3n:e4b", Colors.BRIGHT_WHITE) + colorize(" -Gemma model for everday use on everyday devices like phones, laptops :-)", Colors.WHITE))
         
         current_model = getattr(self.rag_processor, 'generation_model', 'Unknown')
         print_info(f"Current model: {colorize(current_model, Colors.BRIGHT_CYAN)}")
