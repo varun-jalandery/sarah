@@ -1,4 +1,4 @@
-# MyAI Project
+# Sarah
 
 A Python-based AI application leveraging LLM models, Ollama, vector embeddings, and ChromaDb to store
 the embeddings for serving context to the LLM before replying to prompts.
@@ -92,7 +92,7 @@ The application uses environment variables for configuration. Key settings inclu
 
 ### Model Configuration
 - `EMBEDDING_MODEL`: Ollama model for embeddings (default: `mxbai-embed-large`)
-- `GENERATION_MODEL`: Ollama model for text generation (default: `llama3.2`)
+- `GENERATION_MODEL`: Ollama model for text generation (default: `gemma`)
 - `SENTENCE_TRANSFORMER_MODEL`: Sentence transformer model (default: `BAAI/bge-large-en-v1.5`)
 
 ### File Processing
@@ -135,7 +135,7 @@ python app.py
 #### Available Commands
 - `/context` - Add multi-line context directly to ChromaDB
 - `/clear` - Clear all documents from ChromaDB collection
-- `/model` - Switch LLM model between gemma, llama, and llama3.2
+- `/model` - Switch LLM model between gemma, mistral, and gemma.n
 - `/info` - Show system information
 - `/help` - Show available commands
 - `/bye` - Exit the program
