@@ -4,9 +4,9 @@ sudo apt -y install python3  &&
 sudo apt -y install python3.10-venv  &&
 curl -fsSL https://ollama.com/install.sh | sh  &&
 ollama pull mistral:7b &&
-ollama pull gemma3:4b  &&
-ollama pull gemma3:27b &&
-ollama pull gemma3n:e4b &&
+# ollama pull gemma3:4b  &&
+# ollama pull gemma3:27b &&
+# ollama pull gemma3n:e4b &&
 wget https://github.com/varun-jalandery/sarah/archive/refs/heads/mainline.zip  &&
 unzip mainline.zip  &&
 cd sarah-mainline  &&
