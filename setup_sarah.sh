@@ -3,6 +3,8 @@ sudo apt -y install unzip  &&
 sudo apt -y install python3  &&
 sudo apt -y install python3.10-venv  &&
 curl -fsSL https://ollama.com/install.sh | sh  &&
+echo "Sleeping for 5 seconds, let Ollama wake up" &&
+sleep 5 &&
 ollama pull mistral:7b &&
 # ollama pull gemma3:4b  &&
 # ollama pull gemma3:27b &&
