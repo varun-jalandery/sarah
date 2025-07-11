@@ -15,4 +15,8 @@ cd sarah-mainline  &&
 python3 -m venv .venv  &&
 source .venv/bin/activate && 
 python -m pip install -r requirements.txt &&
-./run_app.sh
+#./run_app.sh
+export ANONYMIZED_TELEMETRY=False
+export CHROMA_TELEMETRY_DISABLED=1
+# Run the application
+python app.py
